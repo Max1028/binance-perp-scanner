@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: "*/10 * * * *"   # 測試：每 10 分鐘跑一次
     # - cron: "0 * * * *"    # 正式：每小時跑一次
-  workflow_dispatch:         # 允許手動觸發
+  workflow_dispatch:         # ✅ 允許手動觸發（Run workflow 會出現）
 
 jobs:
   run:
@@ -27,15 +27,5 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           TIMEFRAMES: ${{ secrets.TIMEFRAMES }}
           MIN_CONF: ${{ secrets.MIN_CONF }}
-          VOL_RATIO_UP: ${{ secrets.VOL_RATIO_UP }}
-          VOL_RATIO_DOWN: ${{ secrets.VOL_RATIO_DOWN }}
-          PX_FLAT_THRESHOLD: ${{ secrets.PX_FLAT_THRESHOLD }}
-          LOW_Q: ${{ secrets.LOW_Q }}
-          HIGH_Q: ${{ secrets.HIGH_Q }}
-          USE_MACD_FILTER: ${{ secrets.USE_MACD_FILTER }}
-          USE_RSI_FILTER: ${{ secrets.USE_RSI_FILTER }}
-          ATR_MULT: ${{ secrets.ATR_MULT }}
-          TP1_R_MULT: ${{ secrets.TP1_R_MULT }}
-          TP2_R_MULT: ${{ secrets.TP2_R_MULT }}
           RUN_LOOP: "false"
         run: python binance_perp_scanner.py
